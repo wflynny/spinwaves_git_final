@@ -1,0 +1,4 @@
+# ccode_test.pyx
+# cython: profile = True
+
+import cython

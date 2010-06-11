@@ -1,0 +1,160 @@
+14:37:35.41  Logging started, 06/02/10                  %%%%%%%%%%%%%%%%%%%%
+14:37:35.41  FullCompiler: starting                                    %%%%%
+14:37:35.41  unsupported opcode 136 at wrapper:105                       % %
+14:37:35.41  unsupported free or cell vars in deduce_all_facts           % %
+14:37:35.41  unsupported opcode 137 at deduce_all_facts:34               % %
+14:37:35.41  unsupported opcode 136 at x_new_facts:16                    % %
+14:37:35.41  unsupported opcode 90 at <module>:3                         % %
+14:37:35.41  unsupported opcode 101 at GzipFile:0                        % %
+14:37:35.43  unsupported opcode 90 at <module>:3                         % %
+14:37:35.43  unsupported opcode 90 at <module>:3                         % %
+14:37:35.43  unsupported opcode 90 at <module>:3                         % %
+14:37:35.43  unsupported opcode 90 at <module>:3                         % %
+14:37:35.43  unsupported opcode 101 at Node:0                            % %
+14:37:35.43  unsupported opcode 101 at EmptyNode:0                       % %
+14:37:35.43  unsupported opcode 101 at Expression:0                      % %
+14:37:35.43  unsupported opcode 101 at Add:0                             % %
+14:37:35.43  unsupported opcode 101 at And:0                             % %
+14:37:35.43  unsupported opcode 101 at AssAttr:0                         % %
+14:37:35.43  unsupported opcode 101 at AssList:0                         % %
+14:37:35.43  unsupported opcode 101 at AssName:0                         % %
+14:37:35.43  unsupported opcode 101 at AssTuple:0                        % %
+14:37:35.43  unsupported opcode 101 at Assert:0                          % %
+14:37:35.43  unsupported opcode 101 at Assign:0                          % %
+14:37:35.43  unsupported opcode 101 at AugAssign:0                       % %
+14:37:35.43  unsupported opcode 101 at Backquote:0                       % %
+14:37:35.43  unsupported opcode 101 at Bitand:0                          % %
+14:37:35.43  unsupported opcode 101 at Bitor:0                           % %
+14:37:35.43  unsupported opcode 101 at Bitxor:0                          % %
+14:37:35.43  unsupported opcode 101 at Break:0                           % %
+14:37:35.43  unsupported opcode 101 at CallFunc:0                        % %
+14:37:35.43  unsupported opcode 101 at Class:0                           % %
+14:37:35.43  unsupported opcode 101 at Compare:0                         % %
+14:37:35.43  unsupported opcode 101 at Const:0                           % %
+14:37:35.43  unsupported opcode 101 at Continue:0                        % %
+14:37:35.43  unsupported opcode 101 at Decorators:0                      % %
+14:37:35.43  unsupported opcode 101 at Dict:0                            % %
+14:37:35.43  unsupported opcode 101 at Discard:0                         % %
+14:37:35.43  unsupported opcode 101 at Div:0                             % %
+14:37:35.43  unsupported opcode 101 at Ellipsis:0                        % %
+14:37:35.43  unsupported opcode 101 at Exec:0                            % %
+14:37:35.43  unsupported opcode 101 at FloorDiv:0                        % %
+14:37:35.43  unsupported opcode 101 at For:0                             % %
+14:37:35.43  unsupported opcode 101 at From:0                            % %
+14:37:35.43  unsupported opcode 101 at Function:0                        % %
+14:37:35.43  unsupported opcode 101 at GenExpr:0                         % %
+14:37:35.43  unsupported opcode 101 at GenExprFor:0                      % %
+14:37:35.43  unsupported opcode 101 at GenExprIf:0                       % %
+14:37:35.43  unsupported opcode 101 at GenExprInner:0                    % %
+14:37:35.43  unsupported opcode 101 at Getattr:0                         % %
+14:37:35.43  unsupported opcode 101 at Global:0                          % %
+14:37:35.43  unsupported opcode 101 at If:0                              % %
+14:37:35.43  unsupported opcode 101 at IfExp:0                           % %
+14:37:35.43  unsupported opcode 101 at Import:0                          % %
+14:37:35.43  unsupported opcode 101 at Invert:0                          % %
+14:37:35.43  unsupported opcode 101 at Keyword:0                         % %
+14:37:35.43  unsupported opcode 101 at Lambda:0                          % %
+14:37:35.43  unsupported opcode 101 at LeftShift:0                       % %
+14:37:35.43  unsupported opcode 101 at List:0                            % %
+14:37:35.43  unsupported opcode 101 at ListComp:0                        % %
+14:37:35.43  unsupported opcode 101 at ListCompFor:0                     % %
+14:37:35.43  unsupported opcode 101 at ListCompIf:0                      % %
+14:37:35.43  unsupported opcode 101 at Mod:0                             % %
+14:37:35.43  unsupported opcode 101 at Module:0                          % %
+14:37:35.43  unsupported opcode 101 at Mul:0                             % %
+14:37:35.43  unsupported opcode 101 at Name:0                            % %
+14:37:35.43  unsupported opcode 101 at Not:0                             % %
+14:37:35.43  unsupported opcode 101 at Or:0                              % %
+14:37:35.43  unsupported opcode 101 at Pass:0                            % %
+14:37:35.43  unsupported opcode 101 at Power:0                           % %
+14:37:35.43  unsupported opcode 101 at Print:0                           % %
+14:37:35.43  unsupported opcode 101 at Printnl:0                         % %
+14:37:35.43  unsupported opcode 101 at Raise:0                           % %
+14:37:35.43  unsupported opcode 101 at Return:0                          % %
+14:37:35.43  unsupported opcode 101 at RightShift:0                      % %
+14:37:35.43  unsupported opcode 101 at Slice:0                           % %
+14:37:35.43  unsupported opcode 101 at Sliceobj:0                        % %
+14:37:35.43  unsupported opcode 101 at Stmt:0                            % %
+14:37:35.43  unsupported opcode 101 at Sub:0                             % %
+14:37:35.43  unsupported opcode 101 at Subscript:0                       % %
+14:37:35.43  unsupported opcode 101 at TryExcept:0                       % %
+14:37:35.43  unsupported opcode 101 at TryFinally:0                      % %
+14:37:35.43  unsupported opcode 101 at Tuple:0                           % %
+14:37:35.43  unsupported opcode 101 at UnaryAdd:0                        % %
+14:37:35.43  unsupported opcode 101 at UnarySub:0                        % %
+14:37:35.43  unsupported opcode 101 at While:0                           % %
+14:37:35.43  unsupported opcode 101 at With:0                            % %
+14:37:35.43  unsupported opcode 101 at Yield:0                           % %
+14:37:35.43  unsupported opcode 101 at WalkerError:0                     % %
+14:37:35.43  unsupported opcode 101 at Transformer:0                     % %
+14:37:35.43  unsupported opcode 90 at <module>:12                        % %
+14:37:35.43  unsupported opcode 101 at ASTVisitor:0                      % %
+14:37:35.43  unsupported opcode 101 at ExampleASTVisitor:0               % %
+14:37:35.43  unsupported opcode 90 at <module>:9                         % %
+14:37:35.43  unsupported opcode 90 at <module>:3                         % %
+14:37:35.43  unsupported opcode 101 at SyntaxErrorChecker:0              % %
+14:37:35.43  unsupported opcode 90 at <module>:3                         % %
+14:37:35.43  unsupported opcode 90 at <module>:6                         % %
+14:37:35.43  unsupported opcode 101 at Set:0                             % %
+14:37:35.43  unsupported opcode 101 at Stack:0                           % %
+14:37:35.43  unsupported opcode 101 at FlowGraph:0                       % %
+14:37:35.43  unsupported opcode 101 at Block:0                           % %
+14:37:35.43  unsupported opcode 101 at PyFlowGraph:0                     % %
+14:37:35.43  unsupported opcode 101 at TupleArg:0                        % %
+14:37:35.43  unsupported opcode 101 at LineAddrTable:0                   % %
+14:37:35.43  unsupported opcode 101 at StackDepthTracker:0               % %
+14:37:35.43  unsupported opcode 90 at <module>:3                         % %
+14:37:35.43  unsupported opcode 101 at FutureParser:0                    % %
+14:37:35.43  unsupported opcode 101 at BadFutureParser:0                 % %
+14:37:35.43  unsupported opcode 90 at <module>:3                         % %
+14:37:35.43  unsupported opcode 101 at Scope:0                           % %
+14:37:35.43  unsupported opcode 101 at ModuleScope:0                     % %
+14:37:35.43  unsupported opcode 101 at FunctionScope:0                   % %
+14:37:35.43  unsupported opcode 101 at GenExprScope:0                    % %
+14:37:35.43  unsupported opcode 101 at LambdaScope:0                     % %
+14:37:35.43  unsupported opcode 101 at ClassScope:0                      % %
+14:37:35.43  unsupported opcode 101 at SymbolVisitor:0                   % %
+14:37:35.43  unsupported opcode 101 at AbstractCompileMode:0             % %
+14:37:35.43  unsupported opcode 101 at Expression:0                      % %
+14:37:35.43  unsupported opcode 101 at Interactive:0                     % %
+14:37:35.43  unsupported opcode 101 at Module:0                          % %
+14:37:35.43  unsupported opcode 101 at LocalNameFinder:0                 % %
+14:37:35.43  unsupported opcode 101 at CodeGenerator:0                   % %
+14:37:35.43  unsupported opcode 101 at NestedScopeMixin:0                % %
+14:37:35.43  unsupported opcode 101 at ModuleCodeGenerator:0             % %
+14:37:35.43  unsupported opcode 101 at ExpressionCodeGenerator:0         % %
+14:37:35.43  unsupported opcode 101 at InteractiveCodeGenerator:0        % %
+14:37:35.43  unsupported opcode 101 at AbstractFunctionCode:0            % %
+14:37:35.43  unsupported opcode 101 at FunctionCodeGenerator:0           % %
+14:37:35.43  unsupported opcode 101 at GenExprCodeGenerator:0            % %
+14:37:35.43  unsupported opcode 101 at AbstractClassCode:0               % %
+14:37:35.43  unsupported opcode 101 at ClassCodeGenerator:0              % %
+14:37:35.43  unsupported opcode 101 at OpFinder:0                        % %
+14:37:35.43  unsupported opcode 101 at Delegator:0                       % %
+14:37:35.43  unsupported opcode 101 at AugGetattr:0                      % %
+14:37:35.43  unsupported opcode 101 at AugName:0                         % %
+14:37:35.43  unsupported opcode 101 at AugSlice:0                        % %
+14:37:35.43  unsupported opcode 101 at AugSubscript:0                    % %
+14:37:35.43  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to visit                    % %
+14:37:35.44  unsupported ** argument in call to _wrapit                  % %
+14:37:35.44  unsupported free or cell vars in _array2string              % %
+14:37:35.44  unsupported opcode 137 at _array2string:289                 % %
+14:37:35.46  memory usage: 575+ kb                                         %
+14:37:35.46  program exit, 06/02/10                     %%%%%%%%%%%%%%%%%%%%

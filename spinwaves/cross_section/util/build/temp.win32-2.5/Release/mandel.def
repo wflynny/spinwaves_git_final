@@ -1,0 +1,3 @@
+LIBRARY mandel.pyd
+EXPORTS
+initmandel

@@ -1,0 +1,3 @@
+LIBRARY ccode_test.pyd
+EXPORTS
+initccode_test

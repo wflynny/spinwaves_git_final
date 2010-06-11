@@ -1,0 +1,3 @@
+LIBRARY hellow.pyd
+EXPORTS
+inithellow
