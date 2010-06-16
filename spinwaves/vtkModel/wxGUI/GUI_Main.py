@@ -24,6 +24,7 @@ from spinwaves.cross_section.general_case2 import run_cross_section, run_eval_cr
 import spinwaves.MonteCarlo.CSim as CSim
 import spinwaves.spinwavecalc.spinwavepanel as spinwavepanel
 import spinwaves.spinwavecalc.spinwave_calc_file as spinwave_calc_file
+import spinwaves.cross_section.csection_panel as csection_panel
 
 import spinwaves.cross_section.util.printing as printing
 
@@ -931,12 +932,24 @@ class Frame(wx.Frame):
 
 	def OnLaunchCrossSection(self, evt):
 		myparent = self
-		#frame_1 = wx.Frame(myparent, -1, "Cross-section")
-		#dlg = Cross_Section(parent = frame_1,id=-1)
-		frame_1 = Cross_Section(self.procManager, self, -1, "")
-		#self.SetExtraStyle(wx.WS_EX_VALIDATE_RECURSIVELY)
-		frame_1.Show()
-		frame_1.Refresh()
+		
+		frame1 = wx.Frame(myparent, -1, "Cross-section")
+		dlg = csection_panel.CrossSectionPanel(procManager = self.procManager, parent=frame1, id = -1)
+#		dlg = csection_panel.CrossSectionPanel(session = self.session, procManager = self.procManager, parent = frame1, id = -1)
+		self.SetExtraStyle(wx.WS_EX_VALIDATE_RECURSIVELY)
+		
+		frame1.Fit()
+		frame1.Show()
+		frame1.Refresh()
+		
+		#OLD
+#		myparent = self
+#		#frame_1 = wx.Frame(myparent, -1, "Cross-section")
+#		#dlg = Cross_Section(parent = frame_1,id=-1)
+#		frame_1 = Cross_Section(self.procManager, self, -1, "")
+#		#self.SetExtraStyle(wx.WS_EX_VALIDATE_RECURSIVELY)
+#		frame_1.Show()
+#		frame_1.Refresh()
 
 	def OnSaveImage(self, evt):
 		"""Saves an image of the current rendering.  Currently only .tiff

@@ -554,7 +554,7 @@ if __name__=='__main__':
     from spinwaves.utilities.Processes import ProcessManager
     app=MyApp()
     frame1 = wx.Frame(None, -1, "Spinwaves")
-    dlg=FormDialog(parent=frame1,id=-1, procManager = ProcessManager(frame1))
+    dlg=SpinwavePanel(parent=frame1,id=-1, procManager = ProcessManager(frame1))
     frame1.Show()
     if 0:
         frame1 = wx.Frame(None, -1, "Spinwaves")

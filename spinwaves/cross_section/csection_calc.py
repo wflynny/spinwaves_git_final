@@ -576,7 +576,7 @@ def generate_cross_section(interactionfile, spinfile, lattice, arg,
     for i in range(N_atoms_uc):
         ni = sp.Symbol('n%i'%(i,), real = True)
         print ni
-        nq = Pow(sp.exp(abs(WQ_SYM)/(BOLTZ_VALUE*temperature))-1,-1)
+        nq = Pow(sp.exp(abs(WQ_SYM)/(BOLTZ_VALUE*temp))-1,-1)
         csection = csection.subs(ni,nq)
     
     print csection
@@ -913,14 +913,16 @@ def plot_cross_section(xi, wtlist, csdata, colorbarFlag = True, minval = 0, maxv
     xi = xi # kapvect[:,0]
     yi = wtlist
     zi = np.array(csdata,'Float64')
-    
+
     zmin, zmax = np.min(zi), np.max(zi)
-    if zmin < minval:
+    if zmin < minval or zmin == sp.nan:
         print 'plotting clipped minimal extrema'
         zi = np.where(zi < minval, minval, zi)
-    if zmax > maxval:
+#        zi = np.where(zi != sp.nan, minval, zi)
+    if zmax > maxval or zmax == sp.nan:
         print 'plotting clipped maximal extrema'
         zi = np.where(zi > maxval, maxval, zi)
+#        zi = np.where(zi != sp.nan, maxval, zi)
     print zmin, zmax
 
     if colorbarFlag:
@@ -1013,7 +1015,8 @@ def calc_eigs_numerically(mat,h,k,l,S=1):
     return np.array(eigarr)
 
 def run_cross_section(interactionfile, spinfile, tau_list, temperature, 
-                      direction=[1,0,0], hkl_interval=[1e-3,2*np.pi,1000], omega_interval=[0,5,1000]):
+                      direction={'kx':1,'ky':0,'kz':0}, hkl_interval=[1e-3,2*np.pi,1000], 
+                      omega_interval=[0,5,1000]):
     """
     We use this method to generate the expression for the cross-section given just the interaction and spins file.
     *** Use this first to calculate cross-section before using any other methods as they all need the csection expression
@@ -1064,13 +1067,13 @@ def run_cross_section(interactionfile, spinfile, tau_list, temperature,
     tau_list = tau_list
 
     if direction != None and hkl_interval != None:
-        if direction[0]:
+        if direction['kx']:
             h_list = np.linspace(hkl_interval[0],hkl_interval[1],hkl_interval[2])
         else: h_list = np.zeros((hkl_interval[2],))
-        if direction[1]:
+        if direction['ky']:
             k_list = np.linspace(hkl_interval[0],hkl_interval[1],hkl_interval[2])
         else: k_list = np.zeros((hkl_interval[2],))
-        if direction[2]:
+        if direction['kz']:
             l_list = np.linspace(hkl_interval[0],hkl_interval[1],hkl_interval[2])
         else: l_list = np.zeros((hkl_interval[2],))
     
@@ -1104,7 +1107,7 @@ def run_eval_cross_section(N_atoms_uc,csection,kaprange,tau_list,eig_list,kapvec
     
     return kapvect,wtlist,csdata
 
-def run_eval_pointwise(N_atoms_uc,csection,kaprange,tau_list,eig_list,kapvect,wtlist,fflist,temp):
+def run_eval_pointwise(N_atoms_uc,atom_list,csection,kaprange,tau_list,eig_list,kapvect,wtlist,fflist,temp):
     """
     This method uses the single_cross_section_calc method to evaluate the csection expression. We have the method
     wrapped in some for loops and it appears faster and more precise than run_eval_cross_section. 
@@ -1152,7 +1155,7 @@ def run_eval_pointwise(N_atoms_uc,csection,kaprange,tau_list,eig_list,kapvect,wt
   
     return h_list, w_list, values.T
 
-def run_spherical_averaging(N_atoms_uc,atom_list,rad,csection,kapvect,tau_list,eig_list,wt_list,fflist,temperature):
+def run_spherical_averaging(N_atoms_uc,atom_list,csection,kapvect,tau_list,eig_list,wt_list,fflist,temperature):
     """
     This method runs the spherical averaging method to calculate the spherically averaged scattering cross_section. 
     
@@ -1327,6 +1330,44 @@ def correction_driver(interactionfile, spinfile, tau_list, temperature,
 #    np.save(os.path.join(file_pathname,r'myfiley.txt'),y)
 #    np.save(os.path.join(file_pathname,r'myfilez.txt'),z)
 
+def cs_driver(interfile, spinfile, hkl_interval, w_interval, tau_list, direction, 
+              temperature, outpath, sphavg_bool, plotchars):
+    
+    ST = clock()
+    
+    atom_list, jnums, jmats,N_atoms_uc = readFiles(interfile,spinfile)
+    
+    (N_atoms_uc, csection, kaprange, tau_list, 
+    eig_list, kapvect, wt_list, fflist) = run_cross_section(interfile, spinfile, tau_list, temperature,
+                                                           direction, hkl_interval, w_interval)
+
+    h_list = kapvect[:,0]
+    k_list = kapvect[:,1]
+    l_list = kapvect[:,2]
+    w_list = wt_list
+
+    st = clock()
+
+    #Regular cross-section calc
+    if not sphavg_bool:
+        x,y,z = run_eval_pointwise(N_atoms_uc, atom_list, csection, kaprange, tau_list,
+                                   eig_list, kapvect, wt_list, fflist, temperature)
+    else:
+        x,y,z = run_spherical_averaging(N_atoms_uc, atom_list, csection, kapvect, tau_list,
+                                        eig_list, wt_list, fflist, temperature)
+    
+    en = clock()
+    print 'Evaluation Run Time', en-st
+
+    EN = clock()
+    print 'Total Run Time', EN - ST
+
+    save_arr = np.vstack([x,y,z])
+    np.save(outpath, save_arr)  
+    
+    min, max, colorbar_bool = plotchars
+    plot_cross_section(x, y, z, colorbarFlag = colorbar_bool, minval = min, maxval = max)        
+
 if __name__=='__main__':
 #def pd():
     #from spinwaves.cross_section.csection_calc import spherical_averaging as sph
@@ -1335,18 +1376,22 @@ if __name__=='__main__':
     
     file_pathname = os.path.abspath('')
     print file_pathname
-    if 1: # YANG
+    if 0: # YANG
         spinfile=r'C:/Documents and Settings/wflynn/Desktop/spins.txt'
         interfile=r'C:/Documents and Settings/wflynn/Desktop/yang_montecarlo.txt'
     if 0: # SQUARE
         spinfile=r'C:/Documents and Settings/wflynn/Desktop/spinwave_test_spins.txt'#'C:/eig_test_Spins.txt'
         interfile=r'C:/Documents and Settings/wflynn/Desktop/spinwave_test_montecarlo.txt'
-    if 0: # CHAIN
+    if 1: # CHAIN
         spinfile=r'C:/Documents and Settings/wflynn/Desktop/sanity_spins.txt'
         interfile=r'C:/Documents and Settings/wflynn/Desktop/sanity_montecarlo.txt'    
     temperature = 0.0001
 
     tau_list = [np.array([0,0,0])]
+
+    cs_driver(interfile, spinfile, [0,2*np.pi,1000], [0,5,1000], tau_list,
+              {'kx':1,'ky':0,'kz':0}, temperature, 'C:/arr.txt', False)
+    sys.exit()
 
     atom_list, jnums, jmats,N_atoms_uc=readFiles(interfile,spinfile)
     
@@ -1377,7 +1422,7 @@ if __name__=='__main__':
     # FASTER/MORE-ACCURATE METHOD TO GENERATE CROSS SECTION
     if 1:
         st = clock()
-        x,y,z=run_eval_pointwise(N_atoms_uc,csection,kaprange,tau_list,eig_list,kapvect,wt_list,fflist,temperature)
+        x,y,z=run_eval_pointwise(N_atoms_uc,atom_list,csection,kaprange,tau_list,eig_list,kapvect,wt_list,fflist,temperature)
         en = clock()
         print 'Evaluation Run Time', en-st
         
@@ -1454,7 +1499,7 @@ if __name__=='__main__':
     tau = np.array([0,0,0])
     wt = np.array(1.0)
     
-    x,y,z=run_spherical_averaging(N_atoms_uc,atom_list,rad,csection,kapvect,tau_list,eig_list,wt_list,fflist,temperature)
+    x,y,z=run_spherical_averaging(N_atoms_uc,atom_list,csection,kapvect,tau_list,eig_list,wt_list,fflist,temperature)
     np.save(os.path.join(file_pathname,r'myfilex.txt'),x)
     np.save(os.path.join(file_pathname,r'myfiley.txt'),y)
     np.save(os.path.join(file_pathname,r'myfilez.txt'),z)

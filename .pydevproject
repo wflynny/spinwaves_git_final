@@ -6,7 +6,7 @@
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
 
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
-<path>/spinwaves_git</path>
+<path>/spinwaves_git_final</path>
 </pydev_pathproperty>
 <pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
 <path>C:\Users\Bill\Documents\Python\elements</path>
